@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="fuzzy-java-webservice:war exploded">
+    <output-path>$PROJECT_DIR$/target/artifacts/fuzzy_java_webservice_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="fuzzy-java-webservice" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="jFuzzyLogic" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="fuzzy-java-webservice/web/Web" />
+    </root>
+  </artifact>
+</component>

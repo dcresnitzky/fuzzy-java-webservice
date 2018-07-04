@@ -18,10 +18,13 @@ public class Nebuoloso {
     // The Java method will process HTTP GET requests
     @GET
     // The Java method will produce content identified by the MIME Media type "text/plain"
-    @Produces("text/plain")
-    public String getClichedMessage(@QueryParam("service") int service, @QueryParam("food") int food) {
+    @Produces("application/json")
+    public String getClichedMessage(@QueryParam("ope") double ope,
+                                    @QueryParam("liq") double liq,
+                                    @QueryParam("roe") double roe,
+                                    @QueryParam("roi") double roi) {
 
-        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("main/resources/fcl/tipper.fcl");
+        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("main/resources/fcl/company.fcl");
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         String fcl = reader.lines().collect(Collectors.joining("\n"));
 
@@ -39,13 +42,15 @@ public class Nebuoloso {
             functionBlock = fis.getFunctionBlock(null);
 
             // Set inputs
-            functionBlock.setVariable("service", service);
-            functionBlock.setVariable("food", food);
+            functionBlock.setVariable("MarOper", ope);
+            functionBlock.setVariable("MarLiq", liq);
+            functionBlock.setVariable("ROE", roe);
+            functionBlock.setVariable("ROI", roi);
 
             // Evaluate
             functionBlock.evaluate();
 
-            return "" + functionBlock.getVariable("tip").getValue();
+            return "" + functionBlock.getVariable("Avaliacao").getValue();
         }
         return "error";
     }

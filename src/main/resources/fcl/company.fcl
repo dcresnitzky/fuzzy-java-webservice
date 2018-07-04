@@ -1,4 +1,4 @@
-FUNCTION_BLOCK tipper
+FUNCTION_BLOCK company
 
 VAR_INPUT
 	MarOper : REAL;
@@ -10,6 +10,7 @@ END_VAR
 VAR_OUTPUT
 	Avaliacao : REAL;
 END_VAR
+
 //-4,00 a -0,04 Péssimo -2,58 a 1,72 Deficiente -0,04 a 3,04 Fraco 1,72 a 3,69 Razoável 3,04 a 7,59 Satisfatório 3,69 a 9,98 Bom 7,59 a 11,00 Ótimo
 FUZZIFY MarOper
 	TERM Pes := (-4, 1) (-2.58, 1) (-0.04, 0) ;
@@ -20,6 +21,7 @@ FUZZIFY MarOper
 	TERM Bom := (3.69, 0) (7.59, 1) (9.98, 0);
 	TERM Oti := (7.59, 0) (9.98, 1) (11, 1);
 END_FUZZIFY
+
 //-6,00 a 1,90 Péssimo -5,70 a 6,10 Deficiente 1,90 a 10,10 Fraco 6,10 a 11,50 Razoável 10,10 a 26,50 Satisfatório 13,80 a 35,40 Bom 26,50 a 40,00 Ótimo
 FUZZIFY ROE
 	TERM Pes := (-6, 1) (-5.7, 1) (1.9, 0) ;
@@ -30,6 +32,7 @@ FUZZIFY ROE
 	TERM Bom := (13.8, 0) (26.5, 1) (35.4, 0);
 	TERM Oti := (26.5, 0) (35.4, 1) (40, 1);
 END_FUZZIFY
+
 //-6,00 a 0,92 Péssimo -4,73 a 3,35 Deficiente 0,92 a 4,30 Fraco 3,35 a 6,25 Razoável 4,30 a 11,55 Satisfatório 6,25 a 14,22 Bom 11,55 a 20,00 Ótimo
 FUZZIFY ROI
 	TERM Pes := (-6, 1) (-4.73, 1) (0.92, 0) ;
@@ -40,6 +43,7 @@ FUZZIFY ROI
 	TERM Bom := (6.25, 0) (11.55, 1) (14.22, 0);
 	TERM Oti := (11.55, 0) (14.22, 1) (20, 1);
 END_FUZZIFY
+
 //-2,00 a 0,40 Péssimo -1,30 a 0,90 Deficiente 0,40 a 1,60 Fraco 0,90 a 2,00 Razoável 1,60 a 5,10 Satisfatório 2,00 a 6,20 Bom 5,10 a 8,00 Ótimo
 FUZZIFY MarLiq
 	TERM Pes := (-2, 1) (-1.3, 1) (0.4, 0) ;
@@ -59,12 +63,16 @@ DEFUZZIFY Avaliacao
 	TERM Sat := (4, 0) (5, 1) (8, 0);
 	TERM Bom := (5, 0) (8, 1) (9, 0);
 	TERM Oti := (8, 0) (9, 1) (10, 1);
+
 	METHOD : COA;
+	DEFAULT := 0;
 END_DEFUZZIFY
 
 RULEBLOCK No1
 	AND : MIN;
+	OR : MAX;
 	ACT : MIN;
+    ACCU : MAX;
 
 	RULE 1 : IF (MarOper IS Pes) AND (ROE IS Pes) AND (ROI IS Pes) AND (MarLiq IS Pes) THEN Avaliacao IS Pes ;
     RULE 2 : IF (MarOper IS Pes) AND (ROE IS Pes) AND (ROI IS Pes) AND (MarLiq IS Def) THEN Avaliacao IS Pes ;

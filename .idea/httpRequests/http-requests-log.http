@@ -1,0 +1,72 @@
+GET http://localhost:8080/fuzzy_java_webservice_war_exploded/?liq=30&ope=4.5&roi=200&roe=20
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-07-04T045116.200.json
+
+###
+
+GET http://localhost:8080/fuzzy_java_webservice_war_exploded/?liq=30&ope=4.5&roi=20&roe=20
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-07-04T045056.200.json
+
+###
+
+GET http://localhost:8080/fuzzy_java_webservice_war_exploded/?liq=30&ope=4.5
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-07-04T045013.200.json
+
+###
+
+GET http://localhost:8080/fuzzy_java_webservice_war_exploded/?food=2&ope=4.5
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-07-04T044958.200.json
+
+###
+
+GET http://localhost:8080/fuzzy_java_webservice_war_exploded/?food=2&service=3
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-07-04T044931.200.json
+
+###
+
+GET http://localhost:8080/fuzzy_java_webservice_war_exploded/?food=2&service=3
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-07-04T044852.200.json
+
+###
+
+GET http://localhost:8080/fuzzy_java_webservice_war_exploded/?food=2&service=3
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-07-04T041825.200.json
+
+###
+
+GET http://localhost:8080/fuzzy_java_webservice_war_exploded/?food=2&service=3
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-07-04T041724.200.txt
+
+###
+
+GET http://localhost:8080/fuzzy_java_webservice_war_exploded/?food=2&service=3
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-07-04T041649.200.txt
+
+###
+
